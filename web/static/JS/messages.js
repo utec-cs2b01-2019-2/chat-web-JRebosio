@@ -1,6 +1,6 @@
 $(function(){
-    var url = "http://127.0.0.1:8000/messages";
-    var url_users = "http://127.0.0.1:8000/users";
+    var url = "/messages";
+    var url_users = "/users";
     $("#grid").dxDataGrid({
         dataSource: DevExpress.data.AspNet.createStore({
             key: "id",
@@ -42,39 +42,39 @@ $(function(){
         }, {
             dataField: "sent_on",
             dataType: "date",
-            format: "MM/dd/yyy hh:mm"
+            format: "MM/dd/yyyy hh:mm"
         }, {
             dataField: "user_from_id",
-             lookup:{
-                    dataSource: DevExpress.data.AspNet.createStore({
-                    key: "id",
-                    loadUrl: url_users,
-                    insertUrl:url_users,
-                    updateUrl:url_users,
-                    deleteUrl:url_users,
-                    onBeforeSend: function(method, ajaxOptions){
-                        ajaxOptions.xhrFields = {withCredentials:true};
-                    }
-                }),
-                valueExpr: "id",
-                displayExpr: "username"
-            }
+            lookup: {
+                    dataSource:  DevExpress.data.AspNet.createStore({
+                        key: "id",
+                        loadUrl: url_users ,
+                        insertUrl: url_users ,
+                        updateUrl: url_users ,
+                        deleteUrl: url_users ,
+                        onBeforeSend: function(method, ajaxOptions) {
+                            ajaxOptions.xhrFields = { withCredentials: true };
+                        }
+                    }),
+                    valueExpr: "id",
+                    displayExpr: "username"
+                }
         }, {
             dataField: "user_to_id",
-             lookup:{
-                    dataSource: DevExpress.data.AspNet.createStore({
-                    key: "id",
-                    loadUrl: url_users,
-                    insertUrl:url_users,
-                    updateUrl:url_users,
-                    deleteUrl:url_users,
-                    onBeforeSend: function(method, ajaxOptions){
-                        ajaxOptions.xhrFields = {withCredentials:true};
-                    }
-                }),
-                valueExpr: "id",
-                displayExpr: "username"
-            }
-        }, ],
+            lookup: {
+                    dataSource:  DevExpress.data.AspNet.createStore({
+                        key: "id",
+                        loadUrl: url_users ,
+                        insertUrl: url_users ,
+                        updateUrl: url_users ,
+                        deleteUrl: url_users ,
+                        onBeforeSend: function(method, ajaxOptions) {
+                            ajaxOptions.xhrFields = { withCredentials: true };
+                        }
+                    }),
+                    valueExpr: "id",
+                    displayExpr: "username"
+                }
+        } ],
     }).dxDataGrid("instance");
 });

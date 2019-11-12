@@ -24,6 +24,6 @@ class Message(connector.Manager.Base):
 
 class Group(connector.Manager.Base):
     __tablename__ = "groups"
-    id = Column(Integer, Sequence('groups_id_seq'), primary_key=True)
+    id = Column(Integer, Sequence('groups_id_seq'),primary_key=True) #Dice que el id se incremente de uno en unp
     name = Column(String(500))
 
